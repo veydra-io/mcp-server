@@ -1,5 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+frontend-react-flow*
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# VSCode settings
+.vscode/
+.history/
+*.code-workspace
+
+# VSCode Python extension
+.pytest_cache
+.python-version
+*.env
+*.venv
+venv/
+ENV/
+env/
+.idea/
 # dependencies
 /node_modules
 */node_modules
