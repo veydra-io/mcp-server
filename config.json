@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://app.veydra.io","http://localhost:3000"],
+    "method": ["GET", "PUT", "POST", "DELETE"],
+    "responseHeader": ["Content-Type"],
+    "maxAgeSeconds": 3600
+  }
+]

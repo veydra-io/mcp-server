@@ -1,0 +1,34 @@
+# GitHub Actions workflow to deploy backend to Google Cloud Run
+# This workflow runs on push to main branch
+name: Deploy Backend to Cloud Run
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'backend/**'
+      - 'shared/**'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CBOT_ENGINE_SA_KEY }}'
+
+      - name: Set up Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+
+      - name: Run gcloud run deploy backend
+        run: |
+          cd contentcurator-app
+          gcloud run deploy api \
+            --image gcr.io/${{ secrets.GCP_CBOT_ENGINE_PROJECT_ID }}/api:${{ github.sha }} \
+            --region us-central1 \
+            --project=${{ secrets.GCP_CBOT_ENGINE_PROJECT_ID }} \
+            --source ./backend
