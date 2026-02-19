@@ -6,7 +6,7 @@ from github import Github
 import os
 
 # Setup
-github_token = "GITHUB_TOKEN_REMOVED"
+github_token = os.environ.get('GITHUB_TOKEN', 'your-github-token-here')
 github_owner = "FrontAnalyticsInc" 
 g = Github(github_token)
 

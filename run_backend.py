@@ -2,7 +2,7 @@ import sys
 import os
 
 # Set up environment variables
-os.environ['GITHUB_TOKEN'] = 'GITHUB_TOKEN_REMOVED'
+os.environ['GITHUB_TOKEN'] = os.environ.get('GITHUB_TOKEN', 'your-github-token-here')
 os.environ['GITHUB_OWNER'] = 'FrontAnalyticsInc'
 
 # Add shared to Python path

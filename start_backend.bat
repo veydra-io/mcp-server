@@ -17,7 +17,7 @@ REM Change to project directory
 cd /d "C:\Users\alexa\Documents\GitHub\contentcurator-app"
 
 REM Activate virtual environment and start backend server with all environment variables
-powershell -Command "& .\backend\.venv\Scripts\Activate.ps1; $env:GITHUB_TOKEN='GITHUB_TOKEN_REMOVED'; $env:GITHUB_OWNER='FrontAnalyticsInc'; $env:PYTHONPATH='C:\Users\alexa\Documents\GitHub\contentcurator-app\shared;C:\Users\alexa\Documents\GitHub\contentcurator-app'; cd backend; python main.py"
+powershell -Command "& .\backend\.venv\Scripts\Activate.ps1; $env:GITHUB_TOKEN=$env:GITHUB_TOKEN; $env:GITHUB_OWNER='FrontAnalyticsInc'; $env:PYTHONPATH='C:\Users\alexa\Documents\GitHub\contentcurator-app\shared;C:\Users\alexa\Documents\GitHub\contentcurator-app'; cd backend; python main.py"
 
 echo.
 echo Server stopped.
