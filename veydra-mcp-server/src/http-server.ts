@@ -248,7 +248,9 @@ Add to your MCP configuration:
   }
 }
 
-Get your API key at: https://veydra.io/settings/api-keys
+OAuth is the recommended default for interactive clients.
+Use API keys for automation/CLI workflows and manage them at:
+https://app.veydra.io/account/api-keys
 
 
 AVAILABLE TOOLS
@@ -263,6 +265,7 @@ AVAILABLE TOOLS
 RESOURCES
 ---------
 Documentation    https://docs.veydra.io
+More Details     https://docs.veydra.io/mcp-integration-guide
 API Reference    https://docs.veydra.io/api-reference
 Dashboard        https://veydra.io
 

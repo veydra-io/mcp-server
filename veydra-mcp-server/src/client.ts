@@ -144,7 +144,7 @@ export class VeydraClient {
    * Get a specific scenario
    */
   async getScenario(modelId: number, scenarioId: string) {
-    return this.request<unknown>("GET", `/v1/model/${modelId}/scenarios/${scenarioId}`);
+    return this.request<unknown>("GET", `/v1/model/${modelId}/scenario/${scenarioId}`);
   }
 
   // ============ Chat/AI Endpoints ============
@@ -156,5 +156,28 @@ export class VeydraClient {
     return this.request<unknown>("POST", `/v1/model/${modelId}/chat`, {
       message,
     });
+  }
+
+  /**
+   * Create a new model
+   */
+  async createModel(payload: {
+    name: string;
+    description?: string;
+    project_key_id?: number;
+    availableModes?: string[];
+  }) {
+    return this.request<unknown>("POST", "/v1/model", payload);
+  }
+
+  /**
+   * Create a new project for the current user
+   */
+  async createProject(payload: {
+    name: string;
+    description?: string;
+    primary_url?: string;
+  }) {
+    return this.request<unknown>("POST", "/v1/user/projects", payload);
   }
 }

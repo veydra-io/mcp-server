@@ -19,10 +19,7 @@ Add to your MCP configuration file:
   "mcpServers": {
     "veydra": {
       "command": "npx",
-      "args": ["@veydra-io/mcp-server"],
-      "env": {
-        "VEYDRA_API_KEY": "your-api-key"
-      }
+      "args": ["@veydra-io/mcp-server"]
     }
   }
 }
@@ -32,17 +29,30 @@ Add to your MCP configuration file:
 
 The server supports two authentication methods:
 
-### API Key (Recommended for CLI tools)
+### OAuth 2.0 (Recommended for CLI tools)
 
-Set the `VEYDRA_API_KEY` environment variable with your API key from the [Veydra Dashboard](https://veydra.io/settings/api-keys).
+Run login once to complete browser-based OAuth:
+
+```bash
+veydra-mcp login
+```
+
+This opens your browser to Veydra auth, then stores credentials locally for future MCP runs.
+
+Helpful commands:
+
+```bash
+veydra-mcp whoami
+veydra-mcp logout
+```
+
+### API Key (Fallback for automation/CI)
+
+Set the `VEYDRA_API_KEY` environment variable with your API key from the [Veydra Dashboard](https://app.veydra.io/account/api-keys).
 
 ```bash
 export VEYDRA_API_KEY=vk_your_api_key_here
 ```
-
-### OAuth 2.0 (For ChatGPT and web integrations)
-
-Configure OAuth with your Veydra credentials for interactive authentication flows.
 
 ## Available Tools
 
@@ -96,7 +106,7 @@ Interpret simulation results and identify key insights.
 
 | Environment Variable | Description | Required |
 |---------------------|-------------|----------|
-| `VEYDRA_API_KEY` | Your Veydra API key | Yes (unless using OAuth) |
+| `VEYDRA_API_KEY` | Your Veydra API key (overrides OAuth session if set) | No |
 | `VEYDRA_API_URL` | API base URL (default: `https://api.veydra.io`) | No |
 
 ## Usage Examples
@@ -115,10 +125,7 @@ Add to your Claude Code MCP settings:
 {
   "veydra": {
     "command": "npx",
-    "args": ["@veydra-io/mcp-server"],
-    "env": {
-      "VEYDRA_API_KEY": "${VEYDRA_API_KEY}"
-    }
+    "args": ["@veydra-io/mcp-server"]
   }
 }
 ```
